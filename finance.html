@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Молиявий Назорат - ADIM Textile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .modal { transition: opacity 0.3s ease; }
+        .mobile-scroll { overflow-x: auto; }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <nav class="bg-slate-900 sticky top-0 z-50 text-white p-4 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-yellow-500 p-2 rounded-lg text-black">
+                    <i class="fas fa-wallet fa-lg"></i>
+                </div>
+                <h2 class="font-black text-lg uppercase tracking-tighter">ADIM <span class="text-yellow-500">FINANCE</span></h2>
+            </div>
+            <a href="login.html" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-xl text-xs font-bold transition-all">ЧИҚИШ</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 md:px-6">
+        
+        <div class="bg-white rounded-[30px] shadow-xl border border-slate-100 overflow-hidden mb-10">
+            <div class="p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <h4 class="text-2xl font-black text-slate-800 italic">Омбор ва Молия <span class="text-yellow-600">Журнали</span></h4>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button class="bg-blue-600 text-white px-5 py-3 rounded-2xl text-sm font-bold"><i class="fas fa-file-word mr-2"></i> WORD</button>
+                    <button class="bg-emerald-600 text-white px-5 py-3 rounded-2xl text-sm font-bold"><i class="fas fa-file-excel mr-2"></i> EXCEL</button>
+                    <button onclick="openModal()" class="bg-slate-900 text-white px-6 py-3 rounded-2xl text-sm font-bold shadow-lg">
+                        <i class="fas fa-plus mr-2 text-yellow-500"></i> ЯНГИ ҚЎШИШ
+                    </button>
+                </div>
+            </div>
+
+            <div class="mobile-scroll">
+                <table class="w-full text-left border-collapse" id="financeTable">
+                    <thead class="bg-slate-50 text-[10px] text-slate-400 uppercase tracking-widest">
+                        <tr>
+                            <th class="p-6">Сана</th>
+                            <th class="p-6">Товар / Хизмат</th>
+                            <th class="p-6">Тур</th>
+                            <th class="p-6">Миқдор</th>
+                            <th class="p-6 text-center">Амаллар</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-50 text-sm font-semibold">
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-6">26.04.2026</td>
+                            <td class="p-6">Туркия Матоси (Пахта)</td>
+                            <td class="p-6"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-black uppercase">Приход</span></td>
+                            <td class="p-6">5,000 метр</td>
+                            <td class="p-6 flex justify-center space-x-2">
+                                <button onclick="deleteRow(this)" class="w-9 h-9 rounded-xl border border-slate-200 text-red-500 hover:bg-red-50 transition"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div id="addModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-[32px] p-8 shadow-2xl">
+            <h3 class="text-xl font-black mb-6">Янги маълумот қўшиш</h3>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Сана</label>
+                    <input type="date" id="newDate" class="w-full p-3 bg-slate-100 rounded-xl outline-none focus:ring-2 ring-yellow-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Товар номи</label>
+                    <input type="text" id="newName" placeholder="Масалан: Ип-калава" class="w-full p-3 bg-slate-100 rounded-xl outline-none focus:ring-2 ring-yellow-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Тур</label>
+                    <select id="newType" class="w-full p-3 bg-slate-100 rounded-xl outline-none">
+                        <option value="Приход">Кирим (Приход)</option>
+                        <option value="Расход">Чиқим (Расход)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Миқдор</label>
+                    <input type="text" id="newAmount" placeholder="Масалан: 1000 кг" class="w-full p-3 bg-slate-100 rounded-xl outline-none focus:ring-2 ring-yellow-500">
+                </div>
+            </div>
+            <div class="flex gap-3 mt-8">
+                <button onclick="closeModal()" class="flex-1 py-3 text-slate-500 font-bold">БЕКОР ҚИЛИШ</button>
+                <button onclick="saveData()" class="flex-1 py-3 bg-slate-900 text-white rounded-2xl font-bold shadow-lg shadow-slate-200">САҚЛАШ</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Модални очиш
+        function openModal() {
+            document.getElementById('addModal').classList.remove('hidden');
+        }
+
+        // Модални ёпиш
+        function closeModal() {
+            document.getElementById('addModal').classList.add('hidden');
+        }
+
+        // Маълумотни жадвалга қўшиш
+        function saveData() {
+            const date = document.getElementById('newDate').value;
+            const name = document.getElementById('newName').value;
+            const type = document.getElementById('newType').value;
+            const amount = document.getElementById('newAmount').value;
+
+            if(!date || !name || !amount) {
+                alert("Илтимос, ҳамма жойни тўлдиринг!");
+                return;
+            }
+
+            const table = document.getElementById('financeTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            
+            // Турнинг рангини белгилаш
+            const typeClass = type === 'Приход' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
+
+            newRow.innerHTML = `
+                <td class="p-6">${date}</td>
+                <td class="p-6">${name}</td>
+                <td class="p-6"><span class="${typeClass} px-3 py-1 rounded-full text-[10px] font-black uppercase">${type}</span></td>
+                <td class="p-6">${amount}</td>
+                <td class="p-6 flex justify-center space-x-2">
+                    <button onclick="deleteRow(this)" class="w-9 h-9 rounded-xl border border-slate-200 text-red-500 hover:bg-red-50 transition"><i class="fas fa-trash-alt"></i></button>
+                </td>
+            `;
+
+            closeModal();
+            // Тозалаш
+            document.getElementById('newName').value = "";
+            document.getElementById('newAmount').value = "";
+        }
+
+        // Қаторни ўчириш
+        function deleteRow(btn) {
+            if(confirm("Ростан ҳам ушбу маълумотни ўчирмоқчимисиз?")) {
+                const row = btn.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        }
+    </script>
+
+</body>
+</html>

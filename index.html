@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADIM Textile - Ишга таклиф этамиз</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+            url('ur1.jpg');
+            background-size: cover;
+            background-position: center 25%;
+            height: 100vh;
+        }
+
+        .btn-premium {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-premium:hover {
+            background-color: #fbbf24;
+            color: #000 !important;
+            box-shadow: 0 0 25px 8px rgba(251, 191, 36, 0.6);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(45deg);
+            transition: 0.5s;
+            left: -100%;
+        }
+
+        .btn-premium:hover::after { left: 100%; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-blur {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-950 font-sans text-white">
+
+    <nav class="fixed w-full z-50 nav-blur border-b border-white/10 py-4 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-2xl md:text-3xl font-black tracking-tighter italic text-white">
+            ADIM <span class="text-yellow-500">TEXTILE</span>
+        </div>
+
+        <div class="hidden lg:flex items-center space-x-3">
+            <a href="index.html" class="btn-premium bg-transparent text-yellow-500 px-4 py-2 rounded-full font-bold uppercase text-[10px] tracking-widest border border-yellow-500/30">Асосий</a>
+            <a href="about.html" class="btn-premium bg-transparent text-yellow-500 px-4 py-2 rounded-full font-bold uppercase text-[10px] tracking-widest border border-yellow-500/30">Бизнинг тарих</a>
+            <a href="#jobs" class="btn-premium bg-transparent text-yellow-500 px-4 py-2 rounded-full font-bold uppercase text-[10px] tracking-widest border border-yellow-500/30">Иш ўринлари</a>
+            <a href="gallery.html" class="btn-premium bg-white/10 text-white px-4 py-2 rounded-full font-bold uppercase text-[10px] tracking-widest border border-white/20">Галерея</a>
+            <a href="login.html" class="btn-premium bg-white/10 text-white px-4 py-2 rounded-full font-bold uppercase text-[10px] tracking-widest border border-white/20">
+                <i class="fas fa-lock mr-1 text-yellow-500"></i> Кабинет
+            </a>
+            <a href="#contact" class="btn-premium bg-orange-600 text-white px-4 py-2 rounded-full font-bold uppercase text-[10px] tracking-widest border-none ml-2">Боғланиш</a>
+        </div>
+
+        <div class="lg:hidden">
+            <button onclick="toggleMobileMenu()" class="text-yellow-500 text-2xl focus:outline-none">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden flex flex-col space-y-4 pt-6 pb-4 text-center border-t border-white/10 mt-4">
+        <a href="index.html" onclick="toggleMobileMenu()" class="text-yellow-500 font-bold uppercase text-xs">Асосий</a>
+        <a href="about.html" onclick="toggleMobileMenu()" class="text-yellow-500 font-bold uppercase text-xs">Бизнинг тарих</a>
+        <a href="#jobs" onclick="toggleMobileMenu()" class="text-yellow-500 font-bold uppercase text-xs">Иш ўринлари</a>
+        <a href="gallery.html" onclick="toggleMobileMenu()" class="text-yellow-500 font-bold uppercase text-xs">Галерея</a>
+        <a href="login.html" onclick="toggleMobileMenu()" class="text-yellow-500 font-bold uppercase text-xs italic border border-yellow-500/30 py-2 rounded-xl">Шахсий кабинет</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="bg-orange-600 text-white py-3 rounded-xl font-bold uppercase text-xs">Боғланиш</a>
+    </div>
+</nav>
+
+    <section class="hero-section flex items-center justify-center px-6">
+        <div class="glass-card max-w-5xl p-8 md:p-16 rounded-[40px] text-center relative">
+            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-yellow-500 text-black px-8 py-2 rounded-full font-black text-sm uppercase shadow-xl border-4 border-gray-950">
+                Давлат эътирофи
+            </div>
+
+            <h1 class="text-4xl md:text-8xl font-black mb-8 leading-none tracking-tighter">
+                ЮҚОРИ <span class="text-yellow-500">ИШОНЧ</span> <br> ВА СИФАТ
+            </h1>
+            
+            <p class="text-lg md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                "ADIM" тикувчилик фабрикаси Сизни ўз жамоасига таклиф қилади! Биз билан келажагингизни қуринг.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="about.html" class="btn-premium bg-yellow-500 text-black px-10 py-4 rounded-2xl font-black text-lg uppercase shadow-2xl transition inline-block">
+                    Бизнинг тарих <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#jobs" class="btn-premium bg-white/10 text-white px-10 py-4 rounded-2xl font-black text-lg uppercase border-2 border-white/20 hover:bg-white/20 transition inline-block">
+                    Ишга марҳамат
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="jobs" class="py-24 bg-white text-gray-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-gray-950">Ишга таклиф <span class="text-orange-600 text-2xl block md:inline md:text-5xl">қиламиз!</span></h2>
+                <p class="mt-4 text-gray-500 font-bold uppercase tracking-widest">👤 18-40 ёшгача йигит ва қизлар учун</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+                <div class="p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r-xl font-bold">Тикувчи</div>
+                <div class="p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r-xl font-bold">Дазмолчи</div>
+                <div class="p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r-xl font-bold">Бичувчи</div>
+                <div class="p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r-xl font-bold">Сифат назоратчи</div>
+                <div class="p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r-xl font-bold">Тозалик ходими</div>
+                <div class="p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r-xl font-bold">Омбор ишчиси</div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:shadow-xl transition">
+                    <div class="text-orange-600 mb-6 text-3xl"><i class="fas fa-clock"></i></div>
+                    <h3 class="text-xl font-black mb-4">ИШ ВАҚТИ</h3>
+                    <p class="text-gray-600 font-medium">08:00 дан 18:00 гача. <br>Соат 10:00 да чой танаффуси.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:shadow-xl transition">
+                    <div class="text-orange-600 mb-6 text-3xl"><i class="fas fa-utensils"></i></div>
+                    <h3 class="text-xl font-black mb-4">БЕПУЛ ШАРОИТЛАР</h3>
+                    <p class="text-gray-600 font-medium">Иссиқ овқат ва махсус АВТОБУС хизмати мутлақо БЕПУЛ.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:shadow-xl transition">
+                    <div class="text-orange-600 mb-6 text-3xl"><i class="fas fa-coins"></i></div>
+                    <h3 class="text-xl font-black mb-4">ДАРОМАД</h3>
+                    <p class="text-gray-600 font-medium">Ойлик маош ва қўшимча "БОНУС" тизими мавжуд.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-orange-600 p-6 rounded-3xl text-white text-center flex flex-wrap justify-center gap-8 shadow-lg">
+                <div class="flex items-center space-x-2 font-black uppercase tracking-tighter text-lg">
+                    <i class="fas fa-check-circle"></i> <span>Иш ўргатилади</span>
+                </div>
+                <div class="flex items-center space-x-2 font-black uppercase tracking-tighter text-lg">
+                    <i class="fas fa-id-card"></i> <span>Меҳнат стажи юритилади</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-gray-950 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-yellow-500 uppercase mb-10 tracking-widest">Биз билан боғланиш</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <a href="tel:+998900504844" class="p-6 glass-card rounded-2xl hover:bg-yellow-500 hover:text-black transition group">
+                    <i class="fas fa-phone-alt mb-4 text-2xl text-yellow-500 group-hover:text-black"></i>
+                    <p class="font-bold">+998 90 050 48 44</p>
+                </a>
+                <a href="tel:+998993239095" class="p-6 glass-card rounded-2xl hover:bg-yellow-500 hover:text-black transition group">
+                    <i class="fas fa-phone-alt mb-4 text-2xl text-yellow-500 group-hover:text-black"></i>
+                    <p class="font-bold">+998 99 323 90 95</p>
+                </a>
+                <a href="tel:+998979792326" class="p-6 glass-card rounded-2xl hover:bg-yellow-500 hover:text-black transition group">
+                    <i class="fas fa-phone-alt mb-4 text-2xl text-yellow-500 group-hover:text-black"></i>
+                    <p class="font-bold">+998 97 979 23 26</p>
+                </a>
+            </div>
+
+            <div class="p-8 glass-card rounded-[40px] inline-block w-full">
+                <i class="fas fa-map-marker-alt text-red-500 text-3xl mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">МАНЗИЛИМИЗ:</h3>
+                <p class="text-gray-300">Тўрақўрғон тумани, Еттикон МФЙ</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center text-gray-500 bg-black border-t border-white/5">
+        <p class="uppercase tracking-widest text-[10px] mb-2 font-bold italic text-yellow-500/50">Quality & Honor - ADIM Textile</p>
+        <p class="text-sm font-bold">&copy; 2026 <span class="text-gray-300">Vyacheslav Kachanov</span>. Барча ҳуқуқлар ҳимояланган.</p>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        }
+
+        function fireSalute() {
+            const count = 200;
+            const defaults = { origin: { y: 0.7 } };
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+            fire(0.25, { spread: 26, startVelocity: 55, colors: ['#fbbf24', '#f97316'] });
+            fire(0.2, { spread: 60, colors: ['#ffffff', '#fbbf24'] });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45, colors: ['#ef4444'] });
+        }
+    </script>
+</body>
+</html>

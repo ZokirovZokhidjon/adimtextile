@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кириш тизими - ADIM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { 
+            background: radial-gradient(circle at center, #111 0%, #000 100%); 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-family: sans-serif; 
+        }
+
+        .id-card {
+            width: 420px; 
+            height: 280px;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            border-radius: 25px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            padding: 35px;
+            box-shadow: 0 0 50px rgba(251, 191, 36, 0.1);
+        }
+
+        /* ПАРОЛ ИНПУТИ - АЙНАН СИЗ АЙТГАНДЕК */
+        input { 
+            background: rgba(0,0,0,0.8); /* Ичи қоронғуроқ */
+            border: 2px solid #fbbf24; 
+            border-radius: 15px; 
+            
+            /* ЮЛДУЗЧАЛАР РАНГИ */
+            color: #fbbf24 !important; 
+            -webkit-text-fill-color: #fbbf24; /* Юлдузчаларни олтин ранг қилади */
+            
+            text-align: center; 
+            font-size: 45px; /* Юлдузчалар катта ва чиройли */
+            line-height: 1;
+            letter-spacing: 15px; 
+            width: 100%; 
+            padding: 10px; 
+            outline: none; 
+            transition: 0.4s;
+            -webkit-text-security: disc; /* Юлдузча эффекти */
+            
+            /* Юлдузчаларга неон нури бериш */
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
+        }
+
+        input:focus { 
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.5);
+            background: #000;
+        }
+
+        .chip { 
+            width: 55px; 
+            height: 40px; 
+            background: linear-gradient(135deg, #fcd34d 0%, #b45309 100%); 
+            border-radius: 8px; 
+        }
+
+        .back-home {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            color: #fbbf24;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            border: 2px solid #fbbf24;
+            padding: 12px 25px;
+            border-radius: 50px;
+            transition: 0.4s;
+        }
+
+        .back-home:hover { 
+            background: #fbbf24; 
+            color: #000;
+            box-shadow: 0 0 30px #fbbf24;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> АСОСИЙ САҲИФА
+    </a>
+
+    <div class="id-card">
+        <div class="flex justify-between items-start mb-6">
+            <div class="chip"></div>
+            <div class="text-right">
+                <p class="text-[12px] text-yellow-500 font-black tracking-widest italic">ADIM</p>
+                <p class="text-[8px] text-gray-500 font-mono">ID CARD ACCESS</p>
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-[10px] uppercase text-yellow-500/60 mb-2 tracking-[0.3em] text-center font-bold">SECURITY CODE</label>
+            <input type="password" id="pincode" maxlength="5" autofocus>
+        </div>
+
+        <div class="mt-8 flex justify-between items-center text-[10px] font-black font-mono">
+            <span id="status" class="text-white">READY TO SCAN</span>
+            <span class="text-yellow-500/30 italic">VER 2.0</span>
+        </div>
+    </div>
+
+    <script>
+        const pinInput = document.getElementById('pincode');
+        const status = document.getElementById('status');
+
+        pinInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            if (val === '7777') {
+                status.innerText = "BOSS ACCESS GRANTED";
+                status.style.color = "#fbbf24";
+                setTimeout(() => window.location.href = 'boss.html', 500);
+            } 
+            else if (val === '12345') {
+                status.innerText = "FINANCE ACCESS GRANTED";
+                status.style.color = "#fbbf24";
+                setTimeout(() => window.location.href = 'finance.html', 500);
+            }
+            else if (val.length >= 5) {
+                status.innerText = "ACCESS DENIED";
+                status.style.color = "#ff4444";
+                setTimeout(() => { 
+                    pinInput.value = ""; 
+                    status.innerText = "READY TO SCAN";
+                    status.style.color = "white";
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

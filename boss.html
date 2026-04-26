@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Dashboard - ADIM Textile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Plus+Jakarta+Sans:wght@300;400;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0f172a; color: white; }
+        .neon-border { border: 1px solid rgba(234, 179, 8, 0.3); box-shadow: 0 0 20px rgba(234, 179, 8, 0.1); }
+        .stat-card:hover { transform: scale(1.02); transition: 0.3s; }
+        .video-box { aspect-ratio: 16/9; background: #000; border: 2px solid #1e293b; position: relative; overflow: hidden; }
+        .live-tag { position: absolute; top: 10px; left: 10px; background: red; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <header class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+        <div>
+            <h1 class="text-3xl font-black tracking-tighter text-yellow-500 italic">ADIM <span class="text-white font-light">COMMAND CENTER</span></h1>
+            <p class="text-slate-400 text-xs uppercase tracking-widest mt-1">Раҳбарият назорат панели</p>
+        </div>
+        
+        <div class="flex flex-wrap gap-3">
+            <button class="bg-blue-600/20 text-blue-400 border border-blue-600/30 px-4 py-2 rounded-xl text-xs font-bold hover:bg-blue-600 hover:text-white transition">
+                <i class="fas fa-file-word mr-2"></i> ҲИСОБОТ (DOCX)
+            </button>
+            <button class="bg-emerald-600/20 text-emerald-400 border border-emerald-600/30 px-4 py-2 rounded-xl text-xs font-bold hover:bg-emerald-600 hover:text-white transition">
+                <i class="fas fa-file-excel mr-2"></i> ОЙЛИК (XLSX)
+            </button>
+            <a href="login.html" class="bg-red-600/20 text-red-400 border border-red-600/30 px-4 py-2 rounded-xl text-xs font-bold hover:bg-red-600 hover:text-white transition">
+                <i class="fas fa-power-off"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div class="stat-card bg-slate-900 p-6 rounded-[32px] neon-border">
+                <p class="text-slate-500 text-[10px] font-bold uppercase mb-2">Цехдаги ишчилар</p>
+                <h3 class="text-3xl font-black">342 / <span class="text-slate-600 text-xl">450</span></h3>
+                <div class="w-full bg-slate-800 h-1.5 mt-4 rounded-full overflow-hidden">
+                    <div class="bg-yellow-500 h-full" style="width: 76%"></div>
+                </div>
+            </div>
+            <div class="stat-card bg-slate-900 p-6 rounded-[32px] neon-border border-blue-500/30">
+                <p class="text-slate-500 text-[10px] font-bold uppercase mb-2">Бугунги ишлаб чиқариш</p>
+                <h3 class="text-3xl font-black text-blue-400">8,420 <span class="text-sm font-normal">дона</span></h3>
+                <p class="text-[10px] text-green-500 mt-2"><i class="fas fa-caret-up"></i> 12% Кечагига нисбатан</p>
+            </div>
+            <div class="stat-card bg-slate-900 p-6 rounded-[32px] neon-border border-green-500/30">
+                <p class="text-slate-500 text-[10px] font-bold uppercase mb-2">Соф фойда (Ойлик)</p>
+                <h3 class="text-3xl font-black text-green-400">412.5 <span class="text-sm font-normal">млн</span></h3>
+                <p class="text-[10px] text-slate-500 mt-2 italic">Прогноз: 450 млн</p>
+            </div>
+            <div class="stat-card bg-slate-900 p-6 rounded-[32px] neon-border border-red-500/30">
+                <p class="text-slate-500 text-[10px] font-bold uppercase mb-2">Брак (Нуқсон)</p>
+                <h3 class="text-3xl font-black text-red-500">0.4%</h3>
+                <p class="text-[10px] text-red-400 mt-2 uppercase tracking-tighter">Назорат остида</p>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-6">
+                <h4 class="text-sm font-bold uppercase tracking-[0.3em] text-slate-500"><i class="fas fa-video mr-2"></i> Жонли кузатув (Цехлар)</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="video-box rounded-3xl group cursor-pointer">
+                        <div class="live-tag font-bold tracking-widest uppercase">CAM 01 - ТИКУВ ЦЕХИ</div>
+                        <img src="https://images.unsplash.com/photo-1558444479-c8a510525bd8?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition" alt="Цех">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-play text-white/20 text-4xl group-hover:scale-110 transition"></i>
+                        </div>
+                    </div>
+                    <div class="video-box rounded-3xl group cursor-pointer">
+                        <div class="live-tag font-bold tracking-widest uppercase">CAM 02 - ОМБОР</div>
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition" alt="Омбор">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-play text-white/20 text-4xl group-hover:scale-110 transition"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 p-8 rounded-[40px] neon-border h-full">
+                <h4 class="text-sm font-bold uppercase tracking-widest text-yellow-500 mb-6 border-b border-white/5 pb-4">Текор Топшириқлар</h4>
+                <ul class="space-y-4">
+                    <li class="flex items-center space-x-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                        <input type="checkbox" checked class="w-4 h-4 accent-yellow-500">
+                        <span class="text-sm text-slate-300">Туркиядан мато келишини текшириш</span>
+                    </li>
+                    <li class="flex items-center space-x-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                        <input type="checkbox" class="w-4 h-4 accent-yellow-500">
+                        <span class="text-sm text-slate-300 font-bold">Ойлик маошларни тасдиқлаш</span>
+                    </li>
+                    <li class="flex items-center space-x-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                        <input type="checkbox" class="w-4 h-4 accent-yellow-500">
+                        <span class="text-sm text-slate-300">Янги цех очилишини режалаштириш</span>
+                    </li>
+                    <li class="flex items-center space-x-3 p-3 bg-white/5 rounded-xl border border-white/5 opacity-50">
+                        <input type="checkbox" checked class="w-4 h-4 accent-yellow-500">
+                        <span class="text-sm text-slate-300 line-through">Меҳмонларни кутиб олиш</span>
+                    </li>
+                </ul>
+                <button class="w-full mt-8 py-3 bg-yellow-500 text-black font-black rounded-2xl text-xs uppercase hover:bg-yellow-400 transition">
+                    + ЯНГИ ТОПШИРИҚ
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="mt-20 py-8 border-t border-white/5 text-center">
+        <p class="text-[10px] text-slate-600 uppercase tracking-[0.5em]">System Status: Online | Secure Connection | v2.0</p>
+    </footer>
+
+</body>
+</html>
